@@ -1,0 +1,23 @@
+<!--Partial to display content of the CSV File (in the "Show" and "Index")-->
+<table class="table table-bordered table-hover">
+  <thead>
+      <tr>
+        <th>File Name</th>
+        <th>Created at</th>
+        <th>Updated at</th>
+        <th colspan="3"></th>
+      </tr>
+  </thead>
+
+  <tbody>
+    <% csv_files.each do |csv| %>
+        <tr>
+            <td><%= csv.file.file.filename %></td>
+            <td><%= csv.created_at %></td>
+            <td><%= csv.updated_at %></td>
+            <td><%= link_to 'Show', csv %></td>
+            <td><%= link_to 'Destroy', csv, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>

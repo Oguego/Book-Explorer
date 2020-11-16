@@ -1,0 +1,77 @@
+<br>
+<br>
+<div class="row justify-content-center">
+  <div class="col-sm-12 col-md-8">
+
+  <%= form_for(book) do |f| %>
+      <div class="card card-fluid">
+        <h6 class="card-header">
+
+              <% if defined?(modify_book) %>
+                Update <%= book.title %>'s record
+              <%elsif defined?(new_book) %>
+                Enter new Book's record
+              <% end %>
+     </h6>
+
+    <div class="card-body" >
+
+      <% if book.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <ul>
+            <% book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+          <div class="form-group row">
+            <%= f.label :title, class: 'col-form-label col-sm-12 col-md-4' %>
+            <div class="col-sm-12 col-md-8">
+              <%= f.text_field :title, class: " form-control", placeholder: :title, autofocus: true %>
+            </div>
+          </div>
+
+
+            <div class="form-group row">
+              <%= f.label :author_id, class: 'col-form-label col-sm-12 col-md-4' %>
+              <div class="col-sm-12 col-md-8">
+                <%= f.select(:author_id, options_for_select(Author.all.map { |s| [s.name, s.id] }, book.author_id),{prompt: ' -- select -- '}, {class: 'form-control'}) %>
+              </div>
+            </div>
+
+          <div class="form-group row">
+            <%= f.label :published_at, class: 'col-form-label col-sm-12 col-md-4' %>
+            <div class="col-sm-12 col-md-8">
+              <%= f.datetime_select :published_at, class: " form-control", placeholder: :published_at %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :uuid, class: 'col-form-label col-sm-12 col-md-4' %>
+            <div class="col-sm-12 col-md-8">
+              <%= f.text_field :uuid, class: " form-control", placeholder: :uuid %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <%= f.label :publisher_name, class: 'col-form-label col-sm-12 col-md-4' %>
+            <div class="col-sm-12 col-md-8">
+              <%= f.text_field :publisher_name, class: " form-control", placeholder: :publisher_name %>
+            </div>
+          </div>
+    </div>
+
+          <div class="card-footer text-right">
+            <%= link_to 'Back', books_path, class: 'btn btn-primary btn-sm' %> |
+            <%= f.submit 'Save', class: 'btn btn-primary btn-sm' %>
+          </div>
+
+  <% end %>
+
+    </div>
+</div>
+</div>
+
+<%= "<div> <br> </div>".html_safe %>

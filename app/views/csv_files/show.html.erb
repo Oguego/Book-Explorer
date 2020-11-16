@@ -1,0 +1,23 @@
+<!--Show display calling the CSV partial-->
+<br>
+<div class="row justify-content-center">
+  <div class="col-sm-12 col-md-8">
+
+    <div class="card card-fluid">
+      <h6 class="card-header">
+        CSV File details
+      </h6>
+
+      <div class="card-body" >
+        <%= render '/csv_files/display_csv', csv_files: [@csv_file] %>
+
+      </div>
+
+      <div class="card-footer text-right">
+        <%= link_to 'Back', csv_files_path %> |
+        <%= link_to 'Destroy', @csv_file, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </div>
+
+    </div>
+  </div>
+</div>

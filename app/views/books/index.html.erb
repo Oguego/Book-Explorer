@@ -1,0 +1,22 @@
+<br>
+<br>
+<div class="row justify-content-center">
+  <div class="col-sm-12 col-md-8">
+
+      <div class="card card-fluid">
+          <h6 class="card-header">
+            <span class="badge badge-pill badge-info"><h3>Books</h3></span> <br>
+            Books Information
+          </h6>
+
+          <div class="card-body" >
+            <%= render '/books/display_books', books: @books, adjust: true %>
+          </div>
+
+          <div class="card-footer text-right">
+              <%= link_to 'New Book', new_book_path, class: 'btn btn-outline-primary' %>
+          </div>
+      </div>
+
+  </div>
+</div>
